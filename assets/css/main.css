@@ -540,6 +540,10 @@ h6 {
   margin-bottom: 30px;
 }
 
+.footer-links h4 {
+  color: var(--highlight-yellow);
+}
+
 .footer .footer-links ul {
   list-style: none;
   padding: 0;
