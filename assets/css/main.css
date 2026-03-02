@@ -3,31 +3,33 @@
 
 /* Fonts */
 :root {
-  --default-font: "Roboto",  system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-  --heading-font: "Ubuntu",  sans-serif;
-  --nav-font: "Lato",  sans-serif;
+  --default-font: "Roboto", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --heading-font: "Ubuntu", sans-serif;
+  --nav-font: "Lato", sans-serif;
 }
 
-/* Global Colors - The following color variables are used throughout the website. Updating them here will change the color scheme of the entire website */
-:root { 
-  --background-color: #f9fafb; /* Background color for the entire website, including individual sections */
-  --default-color: #333333; /* Default color used for the majority of the text content across the entire website */
-  --heading-color: #102a49; /* Color for headings, subheadings and title throughout the website */
-   --accent-color: #046BAE; /* Accent color that represents your brand on the website. It's used for buttons, links, and other elements that need to stand out */
-  --surface-color: #ffffff; /* The surface color is used as a background of boxed elements within sections, such as cards, icon boxes, or other elements that require a visual separation from the global background. */
-  --contrast-color: #ffffff; /* Contrast color for text, ensuring readability against backgrounds of accent, heading, or default colors. */
 
-  
+:root {
+  --background-color: #F4F3EF;
+  --default-color: #2E2E2E;
+  --heading-color: #0F2A3D;
+  --accent-color: #046BAE;
+  --surface-color: #ffffff;
+  --contrast-color: #ffffff;
+
+
   --accent-secondary: #5691C7;
   --accent-soft: #65BED2;
   --brand-dark: #083350;
+  --brand-mid: #5691C7;
+  --brand-soft: #65BED2;
 
   /* ===== DESTAQUES ===== */
   --highlight-green: #5F6F52;
   --highlight-yellow: #F79400;
 }
 
-/* Nav Menu Colors - The following color variables are used specifically for the navigation menu. They are separate from the global colors to allow for more customization options */
+
 :root {
   --nav-color: #0F2A3D;
   --nav-hover-color: #046BAE;
@@ -37,7 +39,7 @@
   --nav-dropdown-hover-color: #046BAE;
 }
 
-/* Color Presets - These classes override global colors when applied to any section or element, providing reuse of the sam color scheme. */
+
 
 .light-background {
   --background-color: #eff1f3;
@@ -209,7 +211,8 @@ h6 {
 }
 
 .header .logo img {
-  height: 60px;   /* aumente aqui */
+  height: 60px;
+  /* aumente aqui */
   width: auto;
   margin-right: 8px;
 }
@@ -229,6 +232,44 @@ h6 {
   height: 0;
   visibility: hidden;
   overflow: hidden;
+}
+
+
+/* HEADER ACTIONS */
+.header-actions .btn {
+  padding: 8px 18px;
+  font-weight: 500;
+  border-radius: 50px;
+  transition: all 0.3s ease;
+}
+
+/* Botão principal */
+.btn-orcamento {
+  background-color: #046BAE;
+  border: none;
+}
+
+.btn-orcamento:hover {
+  background-color: #083350;
+}
+
+/* Botão App */
+.btn-app {
+  background-color: #F79400;
+  color: #fff;
+  border: none;
+}
+
+.btn-app:hover {
+  background-color: #cc7700;
+  color: #fff;
+}
+
+/* Responsividade */
+@media (max-width: 1199px) {
+  .header-actions {
+    display: none;
+  }
 }
 
 /*--------------------------------------------------------------
@@ -342,254 +383,172 @@ h6 {
 }
 
 /* Navmenu - Mobile */
+/* =========================
+   NAV MOBILE (OFF-CANVAS)
+   ========================= */
 @media (max-width: 1199px) {
-  .mobile-nav-toggle {
-    color: var(--nav-color);
-    font-size: 28px;
-    line-height: 0;
-    margin-right: 10px;
-    cursor: pointer;
-    transition: color 0.3s;
+
+  .nav-mobile-actions {
+    margin-top: 14px;
+    padding-top: 14px;
+    border-top: 1px solid color-mix(in srgb, var(--default-color), transparent 88%);
+    display: grid;
+    gap: 10px;
   }
 
+  .nav-mobile-actions .btn {
+    width: 100%;
+    padding: 12px 14px;
+    border-radius: 12px;
+    font-weight: 700;
+    justify-content: center;
+  }
+
+  .nav-mobile-actions .btn i {
+    margin-right: 8px;
+  }
+
+  /* botão hamburguer */
+  .mobile-nav-toggle {
+    color: var(--nav-color);
+    font-size: 30px;
+    line-height: 1;
+    border: 0;
+    background: transparent;
+    cursor: pointer;
+    padding: 8px 10px;
+    border-radius: 10px;
+    transition: 0.2s;
+  }
+
+  .mobile-nav-toggle:hover {
+    background: color-mix(in srgb, var(--accent-color), transparent 92%);
+    color: var(--nav-hover-color);
+  }
+
+  /* backdrop */
+  .nav-backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(15, 42, 61, 0.55);
+    opacity: 0;
+    visibility: hidden;
+    transition: 0.25s;
+    z-index: 9996;
+  }
+
+  /* NAV container */
   .navmenu {
-    padding: 0;
     z-index: 9997;
   }
 
-  .navmenu ul {
-    display: none;
-    list-style: none;
-    position: absolute;
-    inset: 60px 20px 20px 20px;
-    padding: 10px 0;
+  /* painel lateral */
+  .navmenu>ul {
+    display: block;
+    /* sempre “existe”, mas escondido no translate */
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 100vh;
+    width: min(86vw, 360px);
+    padding: 80px 18px 18px;
+    /* topo maior pra não bater no header */
     margin: 0;
-    border-radius: 6px;
-    background-color: var(--nav-mobile-background-color);
+    list-style: none;
+
+    background: var(--nav-mobile-background-color);
+    box-shadow: -30px 0 60px rgba(0, 0, 0, 0.12);
+
+    transform: translateX(110%);
+    transition: transform 0.28s ease;
     overflow-y: auto;
-    transition: 0.3s;
+    border-left: 1px solid color-mix(in srgb, var(--default-color), transparent 88%);
     z-index: 9998;
-    box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.1);
   }
 
+  /* links */
   .navmenu a,
   .navmenu a:focus {
     color: var(--nav-dropdown-color);
-    padding: 10px 20px;
+    padding: 14px 14px;
     font-family: var(--nav-font);
     font-size: 17px;
-    font-weight: 500;
+    font-weight: 600;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    white-space: nowrap;
-    transition: 0.3s;
-  }
-
-  .navmenu a i,
-  .navmenu a:focus i {
-    font-size: 12px;
-    line-height: 0;
-    margin-left: 5px;
-    width: 30px;
-    height: 30px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 50%;
-    transition: 0.3s;
-    background-color: color-mix(in srgb, var(--accent-color), transparent 90%);
-  }
-
-  .navmenu a i:hover,
-  .navmenu a:focus i:hover {
-    background-color: var(--accent-color);
-    color: var(--contrast-color);
+    border-radius: 12px;
+    transition: 0.2s;
   }
 
   .navmenu a:hover,
   .navmenu .active,
   .navmenu .active:focus {
+    background: color-mix(in srgb, var(--accent-color), transparent 90%);
     color: var(--nav-dropdown-hover-color);
   }
 
-  .navmenu .active i,
-  .navmenu .active:focus i {
-    background-color: var(--accent-color);
-    color: var(--contrast-color);
-    transform: rotate(180deg);
+  /* ícone do dropdown */
+  .navmenu a i,
+  .navmenu a:focus i {
+    font-size: 12px;
+    width: 34px;
+    height: 34px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: color-mix(in srgb, var(--accent-color), transparent 90%);
+    transition: 0.2s;
   }
 
   .navmenu .dropdown ul {
     position: static;
     display: none;
-    z-index: 99;
-    padding: 10px 0;
-    margin: 10px 20px;
-    background-color: var(--nav-dropdown-background-color);
-    border: 1px solid color-mix(in srgb, var(--default-color), transparent 90%);
+    padding: 10px 0 0 0;
+    margin: 6px 0 10px 0;
+    background: transparent;
+    border: 0;
     box-shadow: none;
-    transition: all 0.5s ease-in-out;
-  }
-
-  .navmenu .dropdown ul ul {
-    background-color: rgba(33, 37, 41, 0.1);
   }
 
   .navmenu .dropdown>.dropdown-active {
     display: block;
-    background-color: rgba(33, 37, 41, 0.03);
   }
 
-  .mobile-nav-active {
+  .navmenu .dropdown ul a {
+    font-size: 15px;
+    font-weight: 600;
+    padding: 12px 14px;
+    margin-left: 10px;
+    border-left: 2px solid color-mix(in srgb, var(--accent-color), transparent 70%);
+    border-radius: 10px;
+  }
+
+  /* quando ativo: abre painel e mostra backdrop */
+  body.mobile-nav-active {
     overflow: hidden;
   }
 
-  .mobile-nav-active .mobile-nav-toggle {
+  body.mobile-nav-active .nav-backdrop {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  body.mobile-nav-active .navmenu>ul {
+    transform: translateX(0);
+  }
+
+  /* botão X flutuando no topo do painel */
+  body.mobile-nav-active .mobile-nav-toggle {
     color: #fff;
-    position: absolute;
-    font-size: 32px;
-    top: 15px;
-    right: 15px;
-    margin-right: 0;
-    z-index: 9999;
-  }
-
-  .mobile-nav-active .navmenu {
     position: fixed;
-    overflow: hidden;
-    inset: 0;
-    background: rgba(33, 37, 41, 0.8);
-    transition: 0.3s;
+    top: 14px;
+    right: 14px;
+    z-index: 9999;
+    background: rgba(0, 0, 0, 0.25);
+    backdrop-filter: blur(6px);
   }
-
-  .mobile-nav-active .navmenu>ul {
-    display: block;
-  }
-}
-
-/*--------------------------------------------------------------
-# Global Footer
---------------------------------------------------------------*/
-.footer {
-  color: var(--default-color);
-  background-color: var(--background-color);
-  font-size: 14px;
-  padding-bottom: 50px;
-  position: relative;
-}
-
-.footer .footer-top {
-  padding-top: 50px;
-  border-top: 1px solid color-mix(in srgb, var(--default-color), transparent 90%);
-}
-
-.footer .footer-about .logo {
-  line-height: 1;
-  margin-bottom: 25px;
-}
-
-.footer .footer-about .logo img {
-  max-height: 40px;
-  margin-right: 6px;
-}
-
-.footer .footer-about .logo span {
-  color: var(--heading-color);
-  font-size: 30px;
-  font-weight: 700;
-  letter-spacing: 1px;
-  font-family: var(--heading-font);
-}
-
-.footer .footer-about p {
-  font-size: 14px;
-  font-family: var(--heading-font);
-}
-
-.footer .social-links a {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  border: 1px solid color-mix(in srgb, var(--default-color), transparent 50%);
-  font-size: 16px;
-  color: color-mix(in srgb, var(--default-color), transparent 50%);
-  margin-right: 10px;
-  transition: 0.3s;
-}
-
-.footer .social-links a:hover {
-  color: var(--accent-color);
-  border-color: var(--accent-color);
-}
-
-.footer h4 {
-  font-size: 16px;
-  font-weight: bold;
-  position: relative;
-  padding-bottom: 12px;
-}
-
-.footer .footer-links {
-  margin-bottom: 30px;
-}
-
-.footer-links h4 {
-  color: var(--highlight-yellow);
-}
-
-.footer .footer-links ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.footer .footer-links ul i {
-  padding-right: 2px;
-  font-size: 12px;
-  line-height: 0;
-}
-
-.footer .footer-links ul li {
-  padding: 10px 0;
-  display: flex;
-  align-items: center;
-}
-
-.footer .footer-links ul li:first-child {
-  padding-top: 0;
-}
-
-.footer .footer-links ul a {
-  color: color-mix(in srgb, var(--default-color), transparent 20%);
-  display: inline-block;
-  line-height: 1;
-}
-
-.footer .footer-links ul a:hover {
-  color: var(--accent-color);
-}
-
-.footer .footer-contact p {
-  margin-bottom: 5px;
-}
-
-.footer .copyright {
-  padding-top: 25px;
-  padding-bottom: 25px;
-  background-color: color-mix(in srgb, var(--default-color), transparent 95%);
-}
-
-.footer .copyright p {
-  margin-bottom: 0;
-}
-
-.footer .credits {
-  margin-top: 6px;
-  font-size: 13px;
 }
 
 /*--------------------------------------------------------------
@@ -627,38 +586,6 @@ h6 {
   }
 }
 
-/*--------------------------------------------------------------
-# Scroll Top Button
---------------------------------------------------------------*/
-.scroll-top {
-  position: fixed;
-  visibility: hidden;
-  opacity: 0;
-  right: 15px;
-  bottom: 15px;
-  z-index: 99999;
-  background-color: var(--accent-color);
-  width: 40px;
-  height: 40px;
-  border-radius: 4px;
-  transition: all 0.4s;
-}
-
-.scroll-top i {
-  font-size: 24px;
-  color: var(--contrast-color);
-  line-height: 0;
-}
-
-.scroll-top:hover {
-  background-color: color-mix(in srgb, var(--accent-color), transparent 20%);
-  color: var(--contrast-color);
-}
-
-.scroll-top.active {
-  visibility: visible;
-  opacity: 1;
-}
 
 /*--------------------------------------------------------------
 # Disable aos animation delay on mobile devices
@@ -739,6 +666,7 @@ section,
   padding: 0;
   line-height: 1px;
   margin: 0;
+  margin-bottom: 15px;
   letter-spacing: 0.5px;
   text-transform: uppercase;
   position: relative;
@@ -1016,7 +944,7 @@ section,
 
 .about .achievement-boxes .achievement-box {
   background-color: var(--surface-color);
-  border-left: 4px solid var(--accent-color);
+  border-left: 4px solid var(--highlight-yellow);
   padding: 1.2rem;
   height: 100%;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
@@ -2668,7 +2596,7 @@ section,
 .call-to-action .cta-form-section .form-header h3 {
   font-size: 1.8rem;
   font-weight: 700;
-  color: var(--heading-color);
+  color: var(--highlight-yellow);
   margin-bottom: 0.5rem;
 }
 
@@ -4906,9 +4834,240 @@ section,
   }
 }
 
+
+
 /*--------------------------------------------------------------
-# Starter Section Section
+# Scroll Top Button
 --------------------------------------------------------------*/
-.starter-section {
-  /* Add your styles here */
+.scroll-top {
+  position: fixed;
+  visibility: hidden;
+  opacity: 0;
+  right: 15px;
+  bottom: 15px;
+  z-index: 99999;
+  background-color: var(--accent-color);
+  width: 40px;
+  height: 40px;
+  border-radius: 4px;
+  transition: all 0.4s;
+}
+
+.scroll-top i {
+  font-size: 24px;
+  color: var(--contrast-color);
+  line-height: 0;
+}
+
+.scroll-top:hover {
+  background-color: color-mix(in srgb, var(--accent-color), transparent 20%);
+  color: var(--contrast-color);
+}
+
+.scroll-top.active {
+  visibility: visible;
+  opacity: 1;
+}
+
+
+
+
+/* =========================
+   Floating CTA (mobile)
+   ========================= */
+.floating-cta {
+  position: fixed;
+  right: 16px;
+  bottom: 92px;
+  /* fica acima do scroll-top */
+  z-index: 9998;
+  display: grid;
+  gap: 10px;
+
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(8px);
+  transition: 0.2s;
+}
+
+/* aparece quando rolar */
+.floating-cta.active {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.floating-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 14px;
+  border-radius: 999px;
+  text-decoration: none;
+
+  font-weight: 700;
+  font-size: 14px;
+
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+  border: 1px solid color-mix(in srgb, var(--default-color), transparent 86%);
+  backdrop-filter: blur(8px);
+}
+
+/* Ícone */
+.floating-btn i {
+  font-size: 18px;
+  line-height: 1;
+}
+
+/* Variações */
+.floating-btn-orcamento {
+  background: color-mix(in srgb, var(--accent-color), transparent 10%);
+  color: var(--contrast-color);
+}
+
+.floating-btn-orcamento:hover {
+  background: #083350;
+  color: var(--contrast-color);
+}
+
+.floating-btn-app {
+  background: var(--highlight-yellow);
+  color: var(--default-color);
+}
+
+
+/* Só no mobile (ajuste o breakpoint se quiser) */
+@media (min-width: 1200px) {
+  .floating-cta {
+    display: none;
+  }
+}
+
+/* Garante que o scroll-top fique abaixo do dock e não esconda */
+.scroll-top {
+  z-index: 9997;
+}
+
+
+/*--------------------------------------------------------------
+# Global Footer
+--------------------------------------------------------------*/
+.footer {
+  color: var(--default-color);
+  background-color: var(--background-color);
+  font-size: 14px;
+  position: relative;
+}
+
+.footer .footer-top {
+  padding-top: 50px;
+  border-top: 1px solid color-mix(in srgb, var(--default-color), transparent 90%);
+}
+
+.footer .footer-about .logo {
+  line-height: 1;
+  margin-bottom: 25px;
+}
+
+.footer .footer-about .logo img {
+  max-height: 40px;
+  margin-right: 6px;
+}
+
+.footer .footer-about .logo span {
+  color: var(--heading-color);
+  font-size: 30px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  font-family: var(--heading-font);
+}
+
+.footer .footer-about p {
+  font-size: 14px;
+  font-family: var(--heading-font);
+}
+
+.footer .social-links a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid color-mix(in srgb, var(--default-color), transparent 50%);
+  font-size: 16px;
+  color: color-mix(in srgb, var(--default-color), transparent 50%);
+  margin-right: 10px;
+  transition: 0.3s;
+}
+
+.footer .social-links a:hover {
+  color: var(--accent-color);
+  border-color: var(--accent-color);
+}
+
+.footer h4 {
+  font-size: 16px;
+  font-weight: bold;
+  position: relative;
+  padding-bottom: 12px;
+}
+
+.footer .footer-links {
+  margin-bottom: 30px;
+}
+
+.footer-links h4 {
+  color: var(--highlight-yellow);
+  order: 2;
+}
+
+.footer .footer-links ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer .footer-links ul i {
+  padding-right: 2px;
+  font-size: 12px;
+  line-height: 0;
+}
+
+.footer .footer-links ul li {
+  padding: 10px 0;
+  display: flex;
+  align-items: center;
+}
+
+.footer .footer-links ul li:first-child {
+  padding-top: 0;
+}
+
+.footer .footer-links ul a {
+  color: color-mix(in srgb, var(--default-color), transparent 20%);
+  display: inline-block;
+  line-height: 1;
+}
+
+.footer .footer-links ul a:hover {
+  color: var(--accent-color);
+}
+
+.footer .footer-contact p {
+  margin-bottom: 5px;
+}
+
+.footer .copyright {
+  padding-top: 25px;
+  padding-bottom: 25px;
+}
+
+.footer .copyright p {
+  margin-bottom: 0;
+}
+
+.footer .credits {
+  margin-top: 6px;
+  font-size: 13px;
 }

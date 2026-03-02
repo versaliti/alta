@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="pt-BR">
 
 <head>
@@ -11,8 +10,8 @@
     name="description" />
   <meta content="administração de condomínios, síndico, moradores, prestação de contas, app, Alta" name="keywords" />
   <!-- Favicons -->
-  
-  <link rel="shortcut icon" href="assets/img/buildings.svg" type="image/x-icon">
+
+  <link rel="shortcut icon" href="assets/img/favicon.ico" type="image/x-icon">
   <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon" />
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com" rel="preconnect" />
@@ -34,33 +33,45 @@
   <header class="header sticky-top" id="header">
     <div class="branding d-flex align-items-center">
       <div class="container position-relative d-flex align-items-center justify-content-between">
+
+        <!-- Logo -->
         <a class="logo d-flex align-items-center" href="index.html">
-          <!-- Uncomment the line below if you also wish to use an image logo -->
-          <img src="assets/img/logo.png" alt="">
-          <!-- <h1 class="sitename">Alta</h1> -->
+          <img src="assets/img/logo.png" alt="Alta Condomínios">
         </a>
+
+        <!-- Navegação -->
         <nav class="navmenu" id="navmenu">
           <ul>
             <li><a class="active" href="#hero">Início</a></li>
             <li><a href="#about">Sobre Nós</a></li>
-            <li><a href="#projects">Clientes</a></li>
-            <li class="dropdown"><a href="#services"><span>Serviços</span> <i
-                  class="bi bi-chevron-down toggle-dropdown"></i></a>
-              <ul>
-                <li><a href="#services">Condomínios residenciais</a></li>
-                <li><a href="#services">Condomínios comerciais</a></li>
-                <li><a href="#services">Associações</a></li>
-                <li><a href="#services">Multifamily</a></li>
-              </ul>
-            </li>
-            <li><a href="#projects">Soluções e Benefícios</a></li>
-            <!-- <li><a href="#certifications">Apps</a></li> -->
+            <li><a href="#services">Serviços</a></li>
+            <li><a href="#projects">Soluções</a></li>
             <li><a href="#call-to-action">Contato</a></li>
           </ul>
-          <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
         </nav>
+
+        <!-- Botões de ação (desktop) -->
+        <div class="header-actions d-none d-xl-flex align-items-center gap-3">
+          <a class="btn btn-primary btn-orcamento" href="#call-to-action">
+            Solicitar Orçamento
+          </a>
+
+          <a class="btn btn-app" href="https://LINK_DO_APP_AQUI" target="_blank" rel="noopener">
+            <i class="bi bi-phone"></i>
+            Acessar App
+          </a>
+        </div>
+
+        <!-- Toggle mobile (ÚNICO) -->
+        <button class="mobile-nav-toggle d-xl-none bi bi-list" type="button" aria-label="Abrir menu"
+          aria-controls="navmenu" aria-expanded="false">
+        </button>
+
       </div>
     </div>
+
+    <!-- Backdrop -->
+    <div class="nav-backdrop"></div>
   </header>
   <main class="main">
     <!-- Hero Section -->
@@ -69,27 +80,28 @@
         <div class="row align-items-center">
           <div class="col-lg-6">
             <div class="hero-content" data-aos="fade-right" data-aos-delay="200">
-              <span class="subtitle">Rápido, fácil e prático</span>
-              <h1>Viver o condomínio une.</h1>
-              <p>Administração de condomínios com tecnologia, transparência e um time de especialistas por segmento.
-                Menos burocracia, mais vida em comunidade.</p>
+              <span class="subtitle">Gestão inteligente para condomínios</span>
+              <h1>Administração que organiza.</h1>
+              <p>Gestão condominial com tecnologia, transparência e especialistas dedicados.
+                Processos organizados, prestação de contas clara e mais eficiência para o dia a dia do seu condomínio.
+              </p>
               <div class="hero-buttons">
-                <a class="btn-primary" href="#call-to-action">Solicitar proposta</a>
-                <a class="btn-secondary" href="#call-to-action">2ª via do boleto / Resolva Fácil</a>
+                <a class="btn-primary" href="#call-to-action">Solicitar Orçamento</a>
+
               </div>
               <div class="trust-badges">
                 <div class="badge-item">
+                  <i class="bi bi-phone"></i>
+                  <div class="badge-text">
+                    <span class="count">App</span>
+                    <span class="label">Para síndicos e moradores</span>
+                  </div>
+                </div>
+                <!-- <div class="badge-item">
                   <i class="bi bi-people"></i>
                   <div class="badge-text">
                     <span class="count">Quase 1M</span>
                     <span class="label">Pessoas atendidas</span>
-                  </div>
-                </div>
-                <!-- <div class="badge-item">
-                  <i class="bi bi-phone"></i>
-                  <div class="badge-text">
-                    <span class="count">Apps</span>
-                    <span class="label">Para síndicos e moradores</span>
                   </div>
                 </div> -->
                 <div class="badge-item">
@@ -105,7 +117,7 @@
           <div class="col-lg-6" data-aos="fade-left" data-aos-delay="300">
             <div class="hero-image">
               <img alt="Gestão condominial com tecnologia" class="img-fluid"
-                src="assets/img/construction/showcase-3.webp" />
+                src="assets/img/construction/showcase-3.png" />
               <div class="image-badge">
                 <span>Prestação de Contas</span>
                 <p>Digital e acessível</p>
@@ -152,23 +164,6 @@
                   </div>
                 </div>
               </div>
-              <div class="certifications mt-5" data-aos="fade-up" data-aos-delay="700">
-                <h5>Soluções que simplificam</h5>
-                <div class="row g-3 align-items-center">
-                  <div class="col-4 col-md-3">
-                    <img alt="Certification" class="img-fluid" src="assets/img/construction/badge-4.webp" />
-                  </div>
-                  <div class="col-4 col-md-3">
-                    <img alt="Certification" class="img-fluid" src="assets/img/construction/badge-3.webp" />
-                  </div>
-                  <div class="col-4 col-md-3">
-                    <img alt="Certification" class="img-fluid" src="assets/img/construction/badge-5.webp" />
-                  </div>
-                </div>
-              </div>
-              <div class="cta-container mt-5" data-aos="fade-up" data-aos-delay="800">
-                <a class="btn btn-primary" href="#projects">Conhecer soluções</a>
-              </div>
             </div>
           </div>
           <div class="col-lg-6">
@@ -180,8 +175,10 @@
                   src="assets/img/construction/project-7.webp" />
               </div>
               <div class="experience-badge" data-aos="zoom-in" data-aos-delay="500">
-                <span>25+</span>
-                <p>Years of Experience</p>
+                <span>
+                  <i class="bi bi-phone"></i>
+                </span>
+                <p>App Integrado</p>
               </div>
             </div>
           </div>
@@ -193,7 +190,9 @@
       <!-- Section Title -->
       <div class="container section-title">
         <h2>Serviços por segmento</h2>
-        <p>Especialistas para cada tipo de condomínio, com processos e tecnologia para simplificar a gestão.</p>
+        <p>Cada tipo de condomínio tem desafios diferentes.</p>
+        <p>Por isso atuamos com especialistas dedicados e soluções sob medida para simplificar a rotina do síndico e do
+          corpo diretivo.</p>
       </div><!-- End Section Title -->
       <div class="container" data-aos="fade-up" data-aos-delay="100">
         <div class="row gy-4">
@@ -1007,7 +1006,7 @@
             </div>
           </div>
         </div>
-      </div> --> 
+      </div> -->
     </section><!-- /Team Section -->
     <!-- Call To Action Section -->
     <section class="call-to-action section light-background" id="call-to-action">
@@ -1067,11 +1066,11 @@
                     <div class="col-12">
                       <div class="form-group">
                         <select class="form-control" name="type" required="">
-                          <option selected="" value="">Selecione o tipo de condomínio</option>
-                          <option value="residencial">Residencial</option>
-                          <option value="comercial">Comercial</option>
-                          <option value="associacao">Associação</option>
-                          <option value="multifamily">Multifamily</option>
+                          <option selected="" value="">Selecione a função no condomínio</option>
+                          <option value="residencial">Sindico Profissional</option>
+                          <option value="comercial">Sindico Morador</option>
+                          <option value="associacao">Morador</option>
+                          <option value="multifamily">Conselheiro</option>
                           <option value="outro">Outro</option>
                         </select>
                       </div>
@@ -1092,9 +1091,12 @@
                       Enviar
                     </button>
                     <div class="contact-alternative">
-                      <span>Or call us directly:</span>
-                      <a class="phone-link" href="tel:+551127977583"><i class="bi bi-telephone-fill"></i> (11)
-                        2797-7583</a>
+                      <span>Ou entre em contato pelo</span>
+                      <a class="phone-link"
+                        href="https://wa.me/551142719500?text=Olá,%20gostaria%20de%20conversar%20sobre%20a%20gestão%20do%20meu%20condomínio."
+                        target="_blank">
+                        <i class="bi bi-whatsapp"></i>
+                        (11) 4271-9500</a>
                     </div>
                   </div>
                 </form>
@@ -1119,18 +1121,18 @@
                       </div>
                       <div class="trust-content">
                         <span class="trust-number">WhatsApp</span>
-                        <span class="trust-label">(11) 2797-7585</span>
+                        <span class="trust-label">(11) 4271-9500</span>
                       </div>
                     </div>
                   </div>
                   <div class="col-4">
                     <div class="trust-item">
                       <div class="trust-icon">
-                        <i class="bi bi-hammer"></i>
+                        <i class="bi bi-envelope-at-fill"></i>
                       </div>
                       <div class="trust-content">
                         <span class="trust-number">E-mail</span>
-                        <span class="trust-label">atendimento@</span>
+                        <span class="trust-label">comercial@altaadministradora.com.br</span>
                       </div>
                     </div>
                   </div>
@@ -1156,44 +1158,63 @@
             <a href=""><i class="bi bi-linkedin"></i></a>
           </div>
         </div>
-        <div class="col-lg-2 col-6 footer-links">
-          <h4>Useful Links</h4>
+        <div class="col-lg-2 col-6 footer-links d-none d-lg-block">
+        </div>
+        <div class="col-lg-2 col-6 footer-links ">
+          <h4>Links Importantes</h4>
           <ul>
+            <li><a href="#services">App</a></li>
             <li><a href="#hero">Início</a></li>
             <li><a href="#about">A Alta</a></li>
             <li><a href="#services">Serviços</a></li>
             <li><a href="#projects">Soluções</a></li>
-            <li><a href="#call-to-action">Contato</a></li>
-          </ul>
-        </div>
-        <div class="col-lg-2 col-6 footer-links">
-          <h4>Our Services</h4>
-          <ul>
-            <li><a href="#services">Residenciais</a></li>
-            <li><a href="#services">Comerciais</a></li>
-            <li><a href="#services">Associações</a></li>
-            <li><a href="#services">Multifamily</a></li>
-            <li><a href="#services">Apps</a></li>
           </ul>
         </div>
         <div class="col-lg-3 col-md-12 footer-contact text-center text-md-start footer-links">
           <h4>Contato</h4>
-          <p>WhatsApp: (11) 2797-7585</p>
-          <p>Telefone: (11) 2797-7583</p>
-          <p>E-mail: atendimento.condominios@alta.com.br</p>
+          <p><i class="bi bi-whatsapp"></i>
+            WhatsApp: (11) 4271-9500</p>
+          <p>
+            <i class="bi bi-whatsapp"></i>
+            Gabryelle - Gerência Administrativa e Financeira: (11) 96258-5601
+          </p>
+          <p>
+            <i class="bi bi-whatsapp"></i>
+            Welson - Gerência Comercial <br> (11) 99710-8330
+          </p>
+
+          <p><i class="bi bi-envelope"></i>
+            E-mail: comercial@altaadministradora.com.br</p>
+          <p><i class="bi bi-pin"></i>
+            Endereço: (atendimento somente com hora marcada).</p>
         </div>
       </div>
     </div>
     <div class="container copyright text-center mt-4">
       <p>© <span>Copyright</span> Alta Condomínios <span>Todos os direitos reservados.</span></p>
-      <div class="credits">        
-        Designed by <a href="https://versaliti.com.br" target="_blank">Versaliti</a>
+      <div class="credits">
+        Desenvolvido por <a href="https://versaliti.com.br" target="_blank">Versaliti</a>
       </div>
     </div>
   </footer>
+
+  <!-- Floating CTA (mobile) -->
+  <div class="floating-cta" aria-label="Ações rápidas">
+    <a href="#call-to-action" class="floating-btn floating-btn-orcamento">
+      <i class="bi bi-chat-dots"></i>
+      <span>Orçamento</span>
+    </a>
+
+    <a href="https://LINK_DO_APP_AQUI" target="_blank" rel="noopener" class="floating-btn floating-btn-app">
+      <i class="bi bi-phone"></i>
+      <span>App</span>
+    </a>
+  </div>
+
   <!-- Scroll Top -->
   <a class="scroll-top d-flex align-items-center justify-content-center" href="#" id="scroll-top"><i
       class="bi bi-arrow-up-short"></i></a>
+
   <!-- Preloader -->
   <div id="preloader"></div>
   <!-- Vendor JS Files -->

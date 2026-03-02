@@ -1,12 +1,4 @@
-/**
-* Template Name: Constructo
-* Template URL: https://bootstrapmade.com/constructo-bootstrap-construction-template/
-* Updated: Aug 30 2025 with Bootstrap v5.3.8
-* Author: BootstrapMade.com
-* License: https://bootstrapmade.com/license/
-*/
-
-(function() {
+(function () {
   "use strict";
 
   /**
@@ -23,18 +15,45 @@
   window.addEventListener('load', toggleScrolled);
 
   /**
-   * Mobile nav toggle
-   */
+ * Mobile nav toggle (melhorado)
+ */
   const mobileNavToggleBtn = document.querySelector('.mobile-nav-toggle');
+  const navBackdrop = document.querySelector('.nav-backdrop');
 
-  function mobileNavToogle() {
-    document.querySelector('body').classList.toggle('mobile-nav-active');
+  function mobileNavToogle(forceClose = false) {
+    const body = document.querySelector('body');
+    const isOpen = body.classList.contains('mobile-nav-active');
+
+    if (forceClose && !isOpen) return;
+
+    body.classList.toggle('mobile-nav-active');
     mobileNavToggleBtn.classList.toggle('bi-list');
     mobileNavToggleBtn.classList.toggle('bi-x');
+
+    const nowOpen = body.classList.contains('mobile-nav-active');
+    mobileNavToggleBtn.setAttribute('aria-expanded', nowOpen ? 'true' : 'false');
+    mobileNavToggleBtn.setAttribute('aria-label', nowOpen ? 'Fechar menu' : 'Abrir menu');
   }
+
   if (mobileNavToggleBtn) {
-    mobileNavToggleBtn.addEventListener('click', mobileNavToogle);
+    mobileNavToggleBtn.addEventListener('click', () => mobileNavToogle());
   }
+
+  /**
+   * Fecha ao clicar no backdrop
+   */
+  if (navBackdrop) {
+    navBackdrop.addEventListener('click', () => mobileNavToogle(true));
+  }
+
+  /**
+   * Fecha com ESC
+   */
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && document.querySelector('body').classList.contains('mobile-nav-active')) {
+      mobileNavToogle(true);
+    }
+  });
 
   /**
    * Hide mobile nav on same-page/hash links
@@ -42,17 +61,16 @@
   document.querySelectorAll('#navmenu a').forEach(navmenu => {
     navmenu.addEventListener('click', () => {
       if (document.querySelector('.mobile-nav-active')) {
-        mobileNavToogle();
+        mobileNavToogle(true);
       }
     });
-
   });
 
   /**
-   * Toggle mobile nav dropdowns
+   * Toggle mobile nav dropdowns (mantém o seu funcionamento)
    */
   document.querySelectorAll('.navmenu .toggle-dropdown').forEach(navmenu => {
-    navmenu.addEventListener('click', function(e) {
+    navmenu.addEventListener('click', function (e) {
       e.preventDefault();
       this.parentNode.classList.toggle('active');
       this.parentNode.nextElementSibling.classList.toggle('dropdown-active');
@@ -71,22 +89,37 @@
   }
 
   /**
-   * Scroll top button
+   * Scroll top button + Floating CTA
    */
   let scrollTop = document.querySelector('.scroll-top');
+  const floatingCta = document.querySelector('.floating-cta');
 
   function toggleScrollTop() {
+    const isActive = window.scrollY > -1;
+
     if (scrollTop) {
-      window.scrollY > 100 ? scrollTop.classList.add('active') : scrollTop.classList.remove('active');
+      isActive
+        ? scrollTop.classList.add('active')
+        : scrollTop.classList.remove('active');
+    }
+
+    if (floatingCta) {
+      isActive
+        ? floatingCta.classList.add('active')
+        : floatingCta.classList.remove('active');
     }
   }
-  scrollTop.addEventListener('click', (e) => {
-    e.preventDefault();
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth'
+
+  // proteção para não dar erro se scroll-top não existir
+  if (scrollTop) {
+    scrollTop.addEventListener('click', (e) => {
+      e.preventDefault();
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
     });
-  });
+  }
 
   window.addEventListener('load', toggleScrollTop);
   document.addEventListener('scroll', toggleScrollTop);
@@ -108,7 +141,7 @@
    * Init swiper sliders
    */
   function initSwiper() {
-    document.querySelectorAll(".init-swiper").forEach(function(swiperElement) {
+    document.querySelectorAll(".init-swiper").forEach(function (swiperElement) {
       let config = JSON.parse(
         swiperElement.querySelector(".swiper-config").innerHTML.trim()
       );
