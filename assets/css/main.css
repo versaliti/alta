@@ -672,14 +672,6 @@ section,
   position: relative;
 }
 
-.section-title h2::after {
-  content: "";
-  width: 120px;
-  height: 1px;
-  display: inline-block;
-  background: var(--accent-color);
-  margin: 4px 10px;
-}
 
 .section-title p {
   color: color-mix(in srgb, var(--default-color), transparent 50%);
@@ -1944,7 +1936,7 @@ section,
   left: 0;
   width: 4px;
   height: 100%;
-  background: var(--accent-color);
+  background: var(--highlight-yellow);
   transform: scaleY(0);
   transform-origin: bottom;
   transition: transform 0.4s ease;
